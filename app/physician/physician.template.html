@@ -1,0 +1,282 @@
+<style type="text/css">
+.panel-heading {
+    position: relative;
+}
+
+.panel-heading[data-toggle="collapse"]:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e072";
+    /* "play" icon */
+    position: absolute;
+    color: #b0c5d8;
+    font-size: 18px;
+    line-height: 22px;
+    right: 20px;
+    top: calc(50% - 10px);
+    /* rotate "play" icon from > (right arrow) to up arrow */
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.panel-heading[data-toggle="collapse"].collapsed:after {
+    /* rotate "play" icon from > (right arrow) to ^ (down arrow) */
+    -webkit-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+}
+</style>
+<br>
+<div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="$ctrl.npiNumber">
+    </div>
+    <div class="col-sm-1">
+        <button type="button" ng-click="$ctrl.physicianDetail($ctrl.npiNumber)" class="btn btn-primary">Find Physician</button>
+    </div>
+</div>
+<br>
+<div class="well">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-success">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+                <h4 class="panel-title text-center"><b style="font-size: 20px;">General Information</b></h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Name:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.fullName" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Gender:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.gender" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Email:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.email" class="form-control" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Phone:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.phone" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Address:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.address1" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>State:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.state" class="form-control" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Country:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.county" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>Fax:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.fax" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-2">
+                                <label>MSA:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.msa" class="form-control" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center" style="height: 53px;">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <h4><b style="font-size: 20px;">Referrences</b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="$ctrl.search" placeholder="Search...">
+                </div>
+                <div class="col-sm-2">
+                    <a href="" ng-click="$ctrl.clear()">X</a>
+                    <button type="button" ng-click="$ctrl.searchvalue($ctrl.search)" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <br>
+            <div style="height:500px;overflow:auto;">
+                <table class="table table-striped text-center">
+                    <tr>
+                        <th style="font-size: 15px;" class="text-center"></th>
+                        <th style="font-size: 15px;" class="text-center" ng-click="orderByField='NPINumber'; reverseSortnpi = !reverseSortnpi">NPINumber<span ng-show="!reverseSortnpi">&#8657;</span><span ng-show="reverseSortnpi">&#8659;</span></span></th>
+                        <th style="font-size: 15px;" class="text-center" ng-click="orderByField='sameDayCount'; reverseSortsamedaycount = !reverseSortsamedaycount">Same Day Count<span ng-show="!reverseSortsamedaycount">&#8657;</span><span ng-show="reverseSortsamedaycount">&#8659;</span></span></th>
+                        <th style="font-size: 15px;" class="text-center" ng-click="orderByField='taxonomy'; reverseSorttaxonomy = !reverseSorttaxonomy">Taxonomy<span ng-show="!reverseSorttaxonomy">&#8657;</span><span ng-show="reverseSorttaxonomy">&#8659;</span></span></th>
+                        <th style="font-size: 15px;" class="text-center" ng-click="orderByField='pairCount'; reverseSort = !reverseSort">Pair Count<span ng-show="!reverseSort">&#8657;</span><span ng-show="reverseSort">&#8659;</span></span></th>
+                        <th style="font-size: 15px;" class="text-center" ng-click="orderByField='beneCount'; reverseSort = !reverseSort">Bene Count<span ng-show="!reverseSort">&#8657;</span><span ng-show="reverseSort">&#8659;</span></span></th>
+                    </tr>
+                    <tr ng-repeat-start="doc in $ctrl.doctorDetail.success.Items[0].items | filter: $ctrl.dummy | orderBy:orderByField:reverseSortnpi | orderBy:orderByField: reverseSortsamedaycount | orderBy:orderByField: reverseSorttaxonomy">
+                        <!-- <td ><button class="btn btn-primary btn-sm"><span  ng-click="expanded = !expanded" class="glyphicon glyphicon-plus"></span></button></td> -->
+                        <td>
+                            <button class="btn btn-primary btn-sm" ng-click="expanded = !expanded">
+                                <span ng-bind="expanded ? '-' : '+'"></span>
+                            </button>
+                        </td>
+                        <td><a href="" ng-click="$ctrl.setNPINo(doc.NPINumber2)">{{doc.NPINumber2}}</a></td>
+                        <td>{{doc.sameDayCount}}</td>
+                        <td>{{doc.taxonomy}}</td>
+                        <td>{{doc.pairCount}}</td>
+                        <td>{{doc.beneCount}}</td>
+                    </tr>
+                    <tr ng-repeat-end ng-show="expanded">
+                        <td></td>
+                        <td colspan="6">
+                            <!-- <table style="border:1px solid #000; width:100%;">
+                    		<tr>value</tr>
+                    	</table> -->
+                            <div class="panel panel-success">
+                                <div class="panel-body" style="background-color: lightblue;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Name:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.fullName" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Gender:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.gender" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Email:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.email" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Phone:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.phone" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Address:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.address1" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>State:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.state" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Country:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.county" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>Fax:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.fax" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="col-sm-2">
+                                                <label>MSA:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" style="width:270px;" ng-model="$ctrl.doctorDetail.success.Items[0].physician.msa" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <div class="text-center">
+                                        <button class="btn btn-primary btn-sm" ng-click="$ctrl.setNPINo($ctrl.doctorDetail.success.Items[0].NPINumber1)">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
